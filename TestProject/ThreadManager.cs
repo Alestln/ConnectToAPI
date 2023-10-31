@@ -1,4 +1,7 @@
-﻿namespace TestProject;
+﻿using System.Text.Json;
+using TestProject.WeatherClasses;
+
+namespace TestProject;
 
 public class ThreadManager
 {
@@ -15,6 +18,14 @@ public class ThreadManager
             {
                 return $"Error: {ex.Message}";
             }
+        });
+    }
+
+    public async Task<Root> Deserealize(string data)
+    {
+        return await Task.Run(async () =>
+        {
+            return JsonSerializer.Deserialize<Root>(data);
         });
     }
 }

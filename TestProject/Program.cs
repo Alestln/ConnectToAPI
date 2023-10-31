@@ -14,7 +14,7 @@ internal class Program
         string data = await threadManager.DownloadDataInThreadAsync(apiService, city);
 
         Console.WriteLine(data);
-        
-        Root root = JsonSerializer.Deserialize<Root>(data);
+
+        Root root = await threadManager.Deserealize(data);
     }
 }
